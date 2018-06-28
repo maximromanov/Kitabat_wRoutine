@@ -4,9 +4,9 @@ A simple markdown-based workflow for sustainable academic writing (with some ada
 
 ## Features
 
-- a nice, simple, yet sufficiently robust interface (<https://atom.io/>)
+- a nice and simple, yet sufficiently robust interface (<https://atom.io/>)
 - atomized drafting; easy inclusion/exclusion of sections into/from the master draft;
-- explicit markup through *markdown*, a simple text encoding scheme;
+- explicit logical markup with *markdown*, a simple text encoding scheme;
 - images and illustrations with captions;
 - cross-references to sections, images, tables within the text;
 - footnotes;
@@ -14,13 +14,13 @@ A simple markdown-based workflow for sustainable academic writing (with some ada
 - bibliography and citation styles;
 - automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires LaTeX engine to be installed on the machine.
 
-The entire wRoutine is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+wRoutine is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
 
-# Requirements
+## Requirements
 
-The following software needs to be installed for the wRoutine to work and function properly.
+The following software must be installed for the wRoutine to work as intended.
 
-- `Atom` (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (some features will not be available though). Desirable packages and the overall configutation is describe below.
+- `Atom` (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
 - `Pandoc` (<https://pandoc.org/>) does all the conversion into different formats;
 - `LaTeX` is used by `Pandoc` to generate PDF files; `MiKTeX`, <https://miktex.org/>, is the easiest way to install and manage `LaTeX` on any machine.
 
@@ -35,9 +35,9 @@ These features are implemented in Atom, and require a few simple steps to be act
 
 `snippets.csv` contains a table of variables to be converted into transliteration snippets for Atom. You can edit this file and add more relevant snippets.
 
-Run `generate_snippets.py` to convert data from `snippets.csv` into the snippets format that Atom understands. These will be saved into `paste_to_snippets.cson.txt`.
+You can run `generate_snippets.py` to regenerate snippets from `snippets.csv`. Snippets will be saved into `paste_to_snippets.cson.txt`, in the format that Atom requires.
 
-The script also generates *hijri>CE* conversion data (for years only).
+This script (`generate_snippets.py`) also generates *hijri>CE* conversion data (for years only).
 
 ### Adding snippets to Atom
 
@@ -65,45 +65,41 @@ The script also generates *hijri>CE* conversion data (for years only).
 	3. `,=t` for *tāʾ marbūṭaŧ*
 	4. `,~a` or `,\`a` for *ã*, *dagger alif*
 	5. `,/a` for *alif maḳṣūraŧ*
-	6. **EXAMPLE:** `,_a` should be converted into ā
+	6. **EXAMPLE:** `,_a` will change into ā
 
 #### *Hiǧrī* years
 
-1. Works for the range from 1 till 1500
-2. Type `,`
-3. Type the desired years
-4. Add `AH` (no spaces between the year and `AH`)
-5. Hit `TAB`
-6. **EXAMPLE:** `,748AH` should be converted into `748/1347 CE`
+1. Works for the range from 1 till 1500;
+2. Type `,`;
+3. Type the desired year;
+4. Add `AH` (no spaces between the year and `AH`);
+5. Hit `TAB`;
+6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`.
 
-## Requirements
+# Sample project
 
+## Text sections
 
+- draft can be atomized into sections and subsections, all stored as separate files;
+- all sections of the main piece must be stored in the `draft` folder;
+- if you work on a book project, you can also create subfolders for each chapter;
+- the filenames must begin with `0` and end with `.md`; change file names to change their order in folders and subfolders. The initial `0` can be changed into some other character (or, better, prepended with `z`) in order to be excluded from the final draft;
+- all files that begin with `0` and end with `.md` will be joined—in alphabetical order—into the master draft in the main folder of the project; subfolders for chapters should also start which allows to easily arrange all folders into a desired order.
+- you can ‘play’ with subfolder and file names to achieve desired order of sections in your final document, for example `000 Introduction.md` will be always before `010 Subject of the Study.md`; you can add prefix `z` to exclude a section file from final draft (actually, any other prefix will work; `z.` will also push excluded section to the bottom of the list).
+- to start your own project, simply replace the existing files with your files; you must keep `000 YAML Header.md` as it is the necessary element for file conversion; simply change information there into what you need (Title, Subtitle, Author, etc.).
 
+## Illustrations and Images
 
+Store illustrations in the `images` folder. An image can be inserted then with:
 
-## OLD STUFF TO BE SORTED OUT
+``` markdown
+![Caption for your image](./images/name_of_the_image_file.jpg)
+```
 
-A w[riting ]routine for: 1) creating in MD and then typesetting into DOCX, HTML, PDF (all with pandoc), plus with some Islamicate flavoring along the way (betaCode conversion, AH>CE conversion, bibliography generation).
+# Old stuff...
 
-# What does one need for comfortable writing?
+## Update from June 16, 2018
 
-- a nice, but simple interface (Atom)
-- explicit markup
-- footnotes
-- easy-to-use transliteration
-- citations and bibliography management
-- atomized drafting, i.e. writing in bits and pieces that can be rearranged, added/removed, and merged into a master draft
-- what else?
-
-# Update from June 16, 2018
-
-- Project folders must begin with three undescore symbols (i.e., `___NameOfTheProject`).
-- Draft can now be atomized into sections and subsections as separate files.
-	- these files must be in `./draft/` subfolder of the writing project
-	- in `./draft/`, you can also use subfolders for larger projects (for chapters, for example)
-	- all subfolder and file names must begin with `0`; section files must end with `.md`;
-	- you can ‘play’ with subfolder and file names to achieve desired order of sections in your final document, for example `000 Introduction.md` will be always before `010 Subject of the Study.md`; add a prefix `z` to exclude a section file from final draft (actually, any other prefix will work; `z.` will also push excluded section to the bottom of the list).
 	- `Makefile` (i.e., running command `make` from *Terminal* [in the folder of your project]) will run all necessary conversion scripts and will generate multiple output files. More specifically:
 	1. `betaCode` and AH dates are converted in all relevant files (`_generateBetaCode.py`)
 	2. masterdraft is generated from sections stored in `./draft/` subfolder and saved into `_draft_autogenerated.md` (`_compile_masterDraft.py`)
@@ -115,18 +111,6 @@ A w[riting ]routine for: 1) creating in MD and then typesetting into DOCX, HTML,
 	8. [Optional: Lines 15-17] conversion into `.DOCX` (15), `.HTML` (16), `.TEX` (17).
 - `ATOM` (<https://atom.io/>) is a great editor for this *wroutine*; on relevant settings, see *Atom Option* below, and also <http://u.arizona.edu/~selisker/post/workflow/> for more details.
 
-## Issues
-
-- There is some issue with `zotero_bibliography.bib` (export from my Zotero library); some fields in records must be formatted badly, since the autocomplete in Atom stops working, if this file is added as a library.
-- For this reason, there is another file (`zotero_bibliography_working_with_atom.bib`) to take care of this issue; I simply add new records to that file on a need-to basis and check if it still works; **NB:** duplicate records do not cause any issues.
-
-
-## Requirements
-
-- `Pandoc` must be installed for conversion from MD to other formats (`LaTeX` must be installed for conversion to PDF; (<https://miktex.org/> is a fine installation management solution )
-- `Python 3.xx`
-- `make`, if not installed (installed on Mac)
-- <https://atom.io/> is great for editing (not a requirement, but a very nice editor with bibliography look up; the latest version is adapted for use with `Atom`); `Atom` options are described below.
 
 ## `Atom` options
 
@@ -135,7 +119,10 @@ A w[riting ]routine for: 1) creating in MD and then typesetting into DOCX, HTML,
 - Bibliography file can be selected
 - Themes: *UITheme*: One Light; *Syntax Theme*: Base16 Tomorrow Light (or their Dark varieties)
 - `insert-timestamp` is a nice option for generating foonote numbers: with a timestamp there will not be any collisions. Python timestamp (`crtl+alt+shift+U`) would work fine for this. Example of a timestamp: `1529359692`
-- *BibLatex-Check* can check the integrity of a bibTex file (my large bibliography has lots of errors, so ATOM cannot work with it)
+
+# To Generate the Final Text
+
+Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project's folder run: `python3 wRoutine.py`). A main draft and then a PDF file should be generated.
 
 # Older description (some valuable notes still)
 
