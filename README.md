@@ -124,60 +124,49 @@ Store illustrations in the `images` folder. An image can be inserted then with:
 
 Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project's folder run: `python3 wRoutine.py`). A main draft and then a PDF file should be generated.
 
-# Older description (some valuable notes still)
 
-## Some notes on running this thing-y
 
-1. To run `pandoc` (easiest solution: make [Makefile]: works beautifully!)
-pandoc --filter pandoc-citeproc --bibliography=biblio.bib --csl=cms-fullnote.csl -V header-includes:'\setmainfont{Brill}' --latex-engine=xelatex text.md -o text.pdf
-	**Where**:
-	pandoc :: the main command
-  	--filter pandoc-citeproc :: enables bibliography formatting
-	--bibliography=biblio.bib :: loads bibliography (bibTex file)
-	--csl=cms-fullnote.csl :: uses a specific citation style (Chicago Manual of Style)
-	text.md :: source file
-	-o :: creates a standalone output
-	text.docx :: the name of the file that will be created (doc, in this case)
-	**Additional LaTeX options**:
-	--V header-includes:'\setmainfont{Brill}’ :: determines the main font
-	--latex-engine=xelatex :: uses xelatex, as the engine (important for Unicode)
-		* Arabic requires additional tweaking of the default LaTeX template (enabling bidirectionality)
-
-2. **The template is stored in ‘___articleCode.zip’**
-	1. unzip > rename > use
-	2. folders with articles must begin with "___" (3 underscores)
-	3. the main text is to be kept in **_draft_articleCode.md**
-		1. `make` file reformats drafts, applying betaCode, converting hijri dates, renumbering footnotes.
-		2. `make` file creates **main.md** (removes comments), which is then used for typesetting other formats.
-	4. bibliography in **biblio.bib** (will be generated automatically from the main bibliography file **zotero_bibliography.bib** in the main folder [one level up])
-	5. Images should be copied to **../images/articleCode/**
-		1. This structuring makes it easy to integrate results into a Jekyll-built website hostable on GitHub.
-	6. Other files are optional
-
-3. **Building bibliography** :
-	1. Bib Keys format: **AuthorTitleYEAR[Editor]**
-		1. camelCase; diacritic>simplified
-		2. author :: author’s last name
-		2. title :: the first word (or a keyword) from the title
-		3. year
-		4. [editor] :: optional, essentially only for editions of primary sources
-	2. **zotero_bibliography.bib**
-		1. One main bibFile exported from Zotero > all formatting changes are to be made here
-		2. The file is then reformatted into a better typeset version (+ **\_mod.bib**)
-		3. New bibliographical records can be added to this file
-		4. Automatically reformated with a script
-	4. **Bibliography for specific projects**:
-		1. A script checks keys in **main.md**
-		2. Then checks main bibliography file
-		3. Then copies results into the relevant **biblio.bib**
-	5. **make** file does the following:
-		1. updates bibliography
-		2. typesets DOCX
-		3. typesets PDF
-		4. typesets LaTeX
-
-## Just a note on how to use  (Imagemagick)
+## Just a note on how to use  `Imagemagick`
 	1. Imagemagick
 		1. convert img1 img2 -append img12
 			1. -append :: vertically
 			2. +append :: horizontally
+
+### Issue with typesetting bibliography
+
+Currently the following hack is implemented (*pandoc* does not seem to generate bibliography correctly --- each item looks like a regular paragraph)
+
+From here <https://tex.stackexchange.com/questions/57637/hanging-indents-in-bibliography>
+
+The answer provided by @jon just gives me an error message.
+
+But I found the following workaround to be working nicely. If your bibliography should appear at the end of the document (the default), just add the following lines at the very end of the Markdown document:
+
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{15pt}
+
+However, if you're manually defining the position of the bibliography (using the tag <div id="refs"></div>), you have to wrap the above lines and the <div> tag in a Latex group to limit the formatting changes to the bibliography only:
+
+\begingroup
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{15pt}
+
+<div id="refs"></div>
+
+\endgroup
+
+Explanation of the commands:
+
+\setlength{\parindent} and \setlength{\leftskip} define the hanging indentation of the bibiography entries.
+\setlength{\parskip} defines the spacing between bibliography entries.
+\noindent is needed in order to also have the very first bibliography entry correctly hanging indented.
+\vspace{-2em} reduces the vertical spacing between the bibliography and the last paragraph before it (because \noindent adds a blank paragraph).
+source: https://groups.google.com/d/msg/pandoc-discuss/4SKA5E11rO4/fDGiNSOsIMkJ
+		
+		

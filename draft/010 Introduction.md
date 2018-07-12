@@ -1,8 +1,8 @@
+# Introduction[^fn00002]
+
 >>>*Biographical dictionaries seem to be, for the researchers in the Islamic Arabic library, both a blessing and a curse.*[^fn00001]
 
 [^fn00001]: [@QadiBiographical1995, p.93].
-
-# Introduction[^fn00002]
 
 [^fn00002]: *Note on transliteration*: The article uses a somewhat unconventional transliteration system, which was developed to facilitate computational analysis. Unlike more traditional transliteration schemes the current one uses one-to-one letter representation, with every Arabic letter transcribed distinctively, which allows for an automatic conversion between transliteration and the Arabic script. The overall scheme should be easily recognizable to Arabists (new letters are as follows: *ŧ* for *tāʾ marbūṭaŧ*; *ã* for dagger *alif*; and *á* for *alif maqṣūraŧ*). Additionally, all attached conjunctions, prepositions, pronominal suffixes are separated with “-”. Whenever applicable, toponyms are given in their current American spelling. Bibliographical references and quotations preserve their original transliteration schemes.
 
