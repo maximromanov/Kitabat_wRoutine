@@ -142,14 +142,17 @@ The answer provided by @jon just gives me an error message.
 
 But I found the following workaround to be working nicely. If your bibliography should appear at the end of the document (the default), just add the following lines at the very end of the Markdown document:
 
+```
 \noindent
 \vspace{-2em}
 \setlength{\parindent}{-0.5in}
 \setlength{\leftskip}{0.5in}
 \setlength{\parskip}{15pt}
+```
 
-However, if you're manually defining the position of the bibliography (using the tag <div id="refs"></div>), you have to wrap the above lines and the <div> tag in a Latex group to limit the formatting changes to the bibliography only:
+However, if you're manually defining the position of the bibliography (using the tag `<div id="refs"></div>`), you have to wrap the above lines and the `<div>` tag in a Latex group to limit the formatting changes to the bibliography only:
 
+```
 \begingroup
 \noindent
 \vspace{-2em}
@@ -160,13 +163,15 @@ However, if you're manually defining the position of the bibliography (using the
 <div id="refs"></div>
 
 \endgroup
+```
 
 Explanation of the commands:
 
-\setlength{\parindent} and \setlength{\leftskip} define the hanging indentation of the bibiography entries.
-\setlength{\parskip} defines the spacing between bibliography entries.
-\noindent is needed in order to also have the very first bibliography entry correctly hanging indented.
-\vspace{-2em} reduces the vertical spacing between the bibliography and the last paragraph before it (because \noindent adds a blank paragraph).
-source: https://groups.google.com/d/msg/pandoc-discuss/4SKA5E11rO4/fDGiNSOsIMkJ
+* `\setlength{\parindent}` and `\setlength{\leftskip}` define the hanging indentation of the bibiography entries.
+* `\setlength{\parskip}` defines the spacing between bibliography entries.
+* `\noindent` is needed in order to also have the very first bibliography entry correctly hanging indented.
+* `\vspace{-2em}` reduces the vertical spacing between the bibliography and the last paragraph before it (because \noindent adds a blank paragraph).
+
+**source**: <https://groups.google.com/d/msg/pandoc-discuss/4SKA5E11rO4/fDGiNSOsIMkJ>
 		
 		
