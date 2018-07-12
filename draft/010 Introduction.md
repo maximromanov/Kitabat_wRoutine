@@ -1,3 +1,6 @@
+> **NB:** This is the pre-publication version. The article is now published as: Maxim G. Romanov, “Algorithmic Analysis of Medieval Arabic Biographical Collections,” *Speculum 92*, no. S1 (October 2017): S226–S246. It is available in open access at: [doi:10.1086/693970](https://www.journals.uchicago.edu/doi/10.1086/693970)
+
+
 # Introduction[^fn00002]
 
 >>>*Biographical dictionaries seem to be, for the researchers in the Islamic Arabic library, both a blessing and a curse.*[^fn00001]

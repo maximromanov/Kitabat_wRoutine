@@ -26,7 +26,7 @@ def formYMLheader(settings):
     template = "---\n%s\n---\n\\newpage\n\n\n"
 
     vals = []
-    listOfVals = ["author", "title", "date", "bibliography", "csl",
+    listOfVals = ["author", "title", "date", "abstract", "bibliography", "csl",
                   "papersize", "indent", "fontsize", "documentclass", "header-includes"]
 
     for l in listOfVals:
