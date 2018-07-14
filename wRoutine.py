@@ -73,6 +73,15 @@ def processAHdates(text):
         ce = AHCE(ah[1:-2])
         ahce = "%s/%s CE" % (ah[1:-2], ce)
         text = text.replace(d.group(), ahce)
+
+    # convert AH dates into CE only
+    for d in re.finditer(r"@\d+TOCE", text):
+        print(d.group())
+        ah = d.group()
+        ce = AHCE(ah[1:-2])
+        ahce = "%s CE" % (ce)
+        text = text.replace(d.group(), ahce)
+        
     return(text)
 
 # betaCode

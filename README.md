@@ -1,6 +1,6 @@
 # Kitābaŧ wRoutine 1.0
 
-A simple markdown-based workflow for sustainable academic writing (with some adaptations for the field of Arabic and Islamic Studies).
+A simple markdown-based workflow for sustainable academic writing (with some adaptations for the field of Arabic and Islamic Studies). It is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
 
 ## Features
 
@@ -9,24 +9,28 @@ A simple markdown-based workflow for sustainable academic writing (with some ada
 - a nice and simple, yet sufficiently robust interface (<https://atom.io/> seem to fit nicely)
 - atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
 - explicit logical markup with *markdown*, a simple text encoding scheme;
-- images and illustrations with captions;
-- cross-references to sections, images, tables within the text;
-- footnotes;
-- automatic citation insertion form bibliography files;
+	- you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown);
+	- standard and expanded pandoc markdown is used for the following (see [Pandoc User’s Guide](http://pandoc.org/MANUAL.html) for very specific details): 
+		- images and illustrations with captions;
+		- cross-references to sections, images, tables within the text;
+		- - footnotes;
+- automatic citation insertion form bibliography files (Atom);
 - bibliography and citation styles;
-- automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires LaTeX engine to be installed on the machine.
+- automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires LaTeX engine to be installed on the machine; at the moment, only PDF conversion is fully implemented.
 
 ### Features: For Arabic and Islamic Studies
 
 They include the following:
 
-- transliteration support, i.e. an easy insertion of tricky characters that are used for transliteration of Arabic.
-- conversion of AH years into AH/CE format, which is usually used in publications.
+- transliteration support, i.e. an easy insertion of tricky characters that are used for transliteration of Arabic (Atom).
+- conversion of AH years into AH/CE format, which is usually used in publications (Atom + script conversion).
 - support of Arabic: 1) Arabic words and phrases in the text; 2) Arabic blockquotes (kept outside of the main text)
 
-The first two features are implemented with Atom *snippets*, and require a few simple steps to be activated.
+The first two features are implemented with Atom *snippets*, and require a few simple steps to be activated. Morphology of snippets is explained below.
 
 ### Arabic support
+
+**NB:** In the default settings, `Amiri` font is required to render Arabic. You can either install it (<https://www.amirifont.org/>), or change the name of the Arabic font in `_settings.yml`
 
 - Inline arabic word or phrase must be inserted into `\textarab{PHRASE}`, where `PHRASE` is an Arabic word or phrase.
 
@@ -114,9 +118,16 @@ This script (`generate_snippets.py`) also generates *hijri > CE* conversion data
 3. Type the desired year;
 4. Add `AH` (no spaces between the year and `AH`);
 5. Hit `TAB`;
-6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`. 
+6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`.
 
-wRoutine is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+**NB:** *Hiǧrī* years can also be converted with `wRoutine.py` script. If you code your dates (yerars and periods) in a certain manner, specific formats can be generated:
+
+| code       |  conversion result |
+|-----------|----------------------|
+| 748AH | 748/1347 CE |
+
+
+
 
 ## Requirements
 
@@ -140,27 +151,11 @@ The following software must be installed for the wRoutine to work as intended.
 
 ## Illustrations and Images
 
-Store illustrations in the `images` folder. An image can be inserted then with:
+Store illustrations in the `images` folder (use subfolders for chapters, if working on a book project). An image can be inserted then with:
 
 ``` markdown
 ![Caption for your image](./images/name_of_the_image_file.jpg)
 ```
-
-# Old stuff...
-
-## Update from June 16, 2018
-
-	- `Makefile` (i.e., running command `make` from *Terminal* [in the folder of your project]) will run all necessary conversion scripts and will generate multiple output files. More specifically:
-	1. `betaCode` and AH dates are converted in all relevant files (`_generateBetaCode.py`)
-	2. masterdraft is generated from sections stored in `./draft/` subfolder and saved into `_draft_autogenerated.md` (`_compile_masterDraft.py`)
-	3. some final formatting is applied and bibliography file (`biblio.bib`) is updated; `main.md` file is created for conversion into other formats (`_draft_to_main.py`).
-	4. [Optional] Optional means the line of code is *commented out*, you need to *uncomment* it for it to work (remove `#` in front of it)
-	5. [Optional] conversion of betaCode transliteration into *Der Islam* system (`mod_translit_to_DerIslam.py`)
-	6. conversion of `main.md` to PDF
-	7. opening of the newly formed PDF
-	8. [Optional: Lines 15-17] conversion into `.DOCX` (15), `.HTML` (16), `.TEX` (17).
-- `ATOM` (<https://atom.io/>) is a great editor for this *wroutine*; on relevant settings, see *Atom Option* below, and also <http://u.arizona.edu/~selisker/post/workflow/> for more details.
-
 
 ## `Atom` options
 
@@ -172,17 +167,15 @@ Store illustrations in the `images` folder. An image can be inserted then with:
 
 # To Generate the Final Text
 
-Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project's folder run: `python3 wRoutine.py`). A main draft and then a PDF file should be generated.
+Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project’s folder run: `python3 wRoutine.py`). On Windows you may need to give the full path to python (version 3.x). This script will collect all pieces into the main draft and then will generate a PDF-file.
 
+# Issues:
 
+## Final Formats
 
-## Just a note on how to use  `Imagemagick`
-	1. Imagemagick
-		1. convert img1 img2 -append img12
-			1. -append :: vertically
-			2. +append :: horizontally
+At the moment only conversion to PDF is implemented; settings for other formats will be added soon, *inšallãh*. Feel free to fork and add those yourself!
 
-### Issue with typesetting bibliography
+## Issue with typesetting bibliography
 
 Currently the following hack is implemented (*pandoc* does not seem to generate bibliography correctly --- each item looks like a regular paragraph)
 
@@ -224,4 +217,13 @@ Explanation of the commands:
 
 **source**: <https://groups.google.com/d/msg/pandoc-discuss/4SKA5E11rO4/fDGiNSOsIMkJ>
 		
-		
+# Random
+
+## Just a note on how to use  `Imagemagick`
+
+	1. `Imagemagick`
+		1. convert img1 img2 -append img12
+			1. -append :: vertically
+			2. +append :: horizontally
+
+
