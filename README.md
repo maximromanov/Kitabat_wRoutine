@@ -111,7 +111,9 @@ This script (`generate_snippets.py`) also generates *hijri > CE* conversion data
 	5. **,/a** for *á*, *alif maḳṣūraŧ*
 	6. **EXAMPLE:** **,_a** will change into *ā*
 
-#### *Hiǧrī* years
+### *Hiǧrī* years
+
+**NB:** The resultant CE year is the one in which the AH year began.
 
 1. Works for the range from 1 till 1500;
 2. Type `,`;
@@ -120,14 +122,14 @@ This script (`generate_snippets.py`) also generates *hijri > CE* conversion data
 5. Hit `TAB`;
 6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`.
 
-**NB:** *Hiǧrī* years can also be converted with `wRoutine.py` script. If you code your dates (yerars and periods) in a certain manner, specific formats can be generated:
+**NB:** *Hiǧrī* years can also be converted with `wRoutine.py` script. If you code your dates (this wirks for years and periods) in a certain manner, specific formats can be generated:
 
 | code       |  conversion result |
 |-----------|----------------------|
-| 748AH | 748/1347 CE |
-
-
-
+| @510–597AH | 510–597 AH / 1116–1200 CE 
+| @510–597TOCE | 1116–1200 CE |
+| @597CE | 597/1200 CE |
+| @597TOCE | 1200 CE |
 
 ## Requirements
 

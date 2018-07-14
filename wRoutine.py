@@ -49,7 +49,7 @@ def AHCE(ah):
 
 def processAHdates(text):
     # convert AH periods to CE only
-    for d in re.finditer(r"@\d+-\d+TOCE", text):
+    for d in re.finditer(r"@\d+[-–—]\d+TOCE\b", text):
         print(d.group())
         ah = d.group()[1:-4].split("-")
         ce1 = AHCE(ah[0])
@@ -58,7 +58,7 @@ def processAHdates(text):
         text = text.replace(d.group(), ahcePeriod)
         
     # convert AH periods into AH/CE format
-    for d in re.finditer(r"@\d+-\d+AH", text):
+    for d in re.finditer(r"@\d+[-–—]\d+AH\b", text):
         print(d.group())
         ah = d.group()[1:-2].split("-")
         ce1 = AHCE(ah[0])
@@ -67,7 +67,7 @@ def processAHdates(text):
         text = text.replace(d.group(), ahcePeriod)
         
     # convert AH dates into AH/CE format
-    for d in re.finditer(r"@\d+AH", text):
+    for d in re.finditer(r"@\d+AH\b", text):
         print(d.group())
         ah = d.group()
         ce = AHCE(ah[1:-2])
@@ -75,10 +75,10 @@ def processAHdates(text):
         text = text.replace(d.group(), ahce)
 
     # convert AH dates into CE only
-    for d in re.finditer(r"@\d+TOCE", text):
+    for d in re.finditer(r"@\d+TOCE\b", text):
         print(d.group())
         ah = d.group()
-        ce = AHCE(ah[1:-2])
+        ce = AHCE(ah[1:-4])
         ahce = "%s CE" % (ce)
         text = text.replace(d.group(), ahce)
         
@@ -94,7 +94,6 @@ def translitFile(file):
             iNew = betaCode.betacodeToTranslit(i.group())
             text = text.replace(i.group(), iNew[2:-2])
 
-        text = processAHdates(text)
         with open(file, "w", encoding="utf8") as f:
             f.write(text)
         print("\tAH>CE & Translit Conversion: %s " % file)
@@ -111,14 +110,16 @@ def processArabicQuotes(file):
         print("To Arabic: %s has been processed..." % file)
 
 # convert relevant files
-def convertRelevant():
-    for path, subdirs, files in os.walk("."):
+def convertRelevant(draftFolder):
+    for path, subdirs, files in os.walk(draftFolder):
        for file in files:
            if file.endswith(tuple([".md"])):
-               #print(file)
+               print(file)
                f = os.path.join(path, file)
                translitFile(f)
                #processArabicQuotes(f)
+
+convertRelevant(settings['draft_folder'])
 
 # insert Arabic quotations into the master_draft
 def insertQuotations(text):
@@ -234,7 +235,6 @@ def updateBibliographies(draftFile):
 
 def main():
     
-    convertRelevant()
     combineMasterDraft(settings['draft_folder'])
     updateBibliographies(settings['draft_in'])
 
