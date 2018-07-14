@@ -20,9 +20,9 @@ wRoutine is based on *markdown*; you can learn all you need to know about it fro
 
 The following software must be installed for the wRoutine to work as intended.
 
-- `Atom` (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
-- `Pandoc` (<https://pandoc.org/>) does all the conversion into different formats;
-- `LaTeX` is used by `Pandoc` to generate PDF files; (`MiKTeX`, <https://miktex.org/>, is the easiest way to install and manage `LaTeX` on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
+- **Atom** (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
+- **Pandoc** (<https://pandoc.org/>) does all the conversion into different formats;
+- **LaTeX** is used by **Pandoc** to generate PDF files; (**MiKTeX**, <https://miktex.org/>, is the easiest way to install and manage **LaTeX** on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
 
 ## Features for the field of Arabic and Islamic studies
 
@@ -38,7 +38,7 @@ These features are implemented in Atom, and require a few simple steps to be act
 
 You can run `generate_snippets.py` to regenerate snippets from `snippets.csv`. Snippets will be saved into `paste_to_snippets.cson.txt`, in the format that Atom requires.
 
-This script (`generate_snippets.py`) also generates *hijri>CE* conversion data (for years only).
+This script (`generate_snippets.py`) also generates *hijri > CE* conversion data (for years only).
 
 ### Adding snippets to Atom
 
@@ -55,18 +55,18 @@ This script (`generate_snippets.py`) also generates *hijri>CE* conversion data (
 2. `Codes` are organized as follows:
 	1. All codes start with `,` — a comma
 	2. The second character should be:
-		1. `*`, `.`, or `8` for characters with `dots` (ḥ, ṭ, ḍ, ġ, etc.)
-		2. `_`, or `-` for characters with macrons and breves (ā, ḫ, ḏ, ṯ, etc.)
-		3. `^` for characters with `^` (š, ǧ, etc.)
+		1. `*`, `.`, or `8` for characters with *dots* (ḥ, ṭ, ḍ, ġ, etc.)
+		2. `_`, or `-` for characters with *macrons* and *breves* (ā, ḫ, ḏ, ṯ, etc.)
+		3. `^` for characters with *^* (š, ǧ, etc.)
 	3. The third character is the desired letter (capitalized, if necessary).
 	4. After that, press `Tab` to complete conversion.
 3. **NB:** There are some additional characters:
-	1. `,<` or `,'` for *hamzaŧ*
-	2. `,>` or `,\`` for *ʿayn*
-	3. `,=t` for *tāʾ marbūṭaŧ*
-	4. `,~a` or ```,`a``` for *ã*, *dagger alif*
-	5. `,/a` for *alif maḳṣūraŧ*
-	6. **EXAMPLE:** `,_a` will change into ā
+	1. **,<** or **,'** for *ʾ*, *hamzaŧ*
+	2. **,>** or **,\`** for *ʿayn*
+	3. **,=t** for **, *tāʾ marbūṭaŧ*
+	4. **,~a** or **,`a** for *ã*, *dagger alif*
+	5. **,/a** for *á*, *alif maḳṣūraŧ*
+	6. **EXAMPLE:** **,_a** will change into *ā*
 
 #### *Hiǧrī* years
 
