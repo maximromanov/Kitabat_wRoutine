@@ -40,7 +40,7 @@ which can be used in a variety of distant reading modes of analysis. In the exam
 
 will be renreded:
 
-![In-line Arabic Text](arabic_inline.png)
+![In-line Arabic Text](./README/arabic_inline.png)
 
 - Blockquotes are stored as separate text files in the subfolder `blockquotes` and added into a text as follows (on a separate line and with empty lines before and after; `>` formats the text as a blockquote):
 
