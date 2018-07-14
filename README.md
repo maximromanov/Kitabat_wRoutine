@@ -1,22 +1,34 @@
 # Kitābaŧ wRoutine 1.0
 
-A simple markdown-based workflow for sustainable academic writing (with some adaptations for the field of Arabic and Islamic Studies). It is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+A simple markdown-based workflow for sustainable academic writing with some features for the field of Arabic and Islamic Studies (transliteration, AH date conversion, Arabic support). To start your own project, simply replace the `*.md` files in the `draft` folder with your own, and change the `_settings.yml` (see below).
 
 ## Features
 
 ### Features: General
 
-- a nice and simple, yet sufficiently robust interface (<https://atom.io/> seem to fit nicely)
-- atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
-- explicit logical markup with *markdown*, a simple text encoding scheme;
-	- you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown);
-	- standard and expanded pandoc markdown is used for the following (see [Pandoc User’s Guide](http://pandoc.org/MANUAL.html) for very specific details): 
+- [Atom] a nice and simple, yet sufficiently robust interface (<https://atom.io/> seem to fit nicely)
+- [wRoutine] atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
+	- draft can be atomized into sections and subsections, all stored as separate files;
+	- all sections of the main piece must be stored in the `draft` folder; if you work on a book project, you can also create subfolders for each chapter;
+	- the filenames must begin with `0` (zero) and end with `.md`; change file names to change their order in folders and subfolders. The initial `0` can be changed into some other character (or, better, prepended with `z`) in order to be excluded from the final draft;
+	- all files that begin with `0` and end with `.md` will be joined—in alphabetical order—into the master draft in the main folder of the project; subfolders for chapters should also start with numbers, which helps to arrange all folders into the desired order. The names of subfolders and files can be changed in order to achieve the desired order of sections within the final document. For example, `000 Introduction.md` will be always before `010 Subject of the Study.md`; prefix `z` can be added to exclude a file from the final draft (`z` will also push an excluded section to the bottom of the list in Atom (and any file browser)).
+- [markdown] explicit logical markup with *markdown*, a simple text encoding scheme;
+	- see the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown);
+	- standard and expanded pandoc markdown is used for the following (see [Pandoc User’s Guide](http://pandoc.org/MANUAL.html) for specific details): 
 		- images and illustrations with captions;
 		- cross-references to sections, images, tables within the text;
-		- - footnotes;
-- automatic citation insertion form bibliography files (Atom);
-- bibliography and citation styles;
-- automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires LaTeX engine to be installed on the machine; at the moment, only PDF conversion is fully implemented.
+		- footnotes;
+- [Atom; bibTeX] automatic citation insertion form bibliography files;
+- [bibTeX; Pandoc] bibliography and citation styles (Pandoc);
+- [Pandoc; XeLaTeX] automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires [Xe]LaTeX engine to be installed on the machine; at the moment, only PDF conversion is fully implemented.
+
+## `_settings.yml` File 
+
+Below is the contents of the `_settings.yml` file, which include all the necessary metadata and settings.
+
+![Settings.yml](./README/settings.png)
+
+
 
 ### Features: For Arabic and Islamic Studies
 
@@ -81,18 +93,18 @@ will be rendered as:
 
 You can run `generate_snippets.py` to regenerate snippets from `snippets.csv`. Snippets will be saved into `paste_to_snippets.cson.txt`, in the format that Atom requires.
 
-This script (`generate_snippets.py`) also generates *hijri > CE* conversion data (for years only).
+This script (`generate_snippets.py`) also generates *AH > CE* conversion data (for years only).
 
 ### Adding snippets to Atom
 
 1. Open `paste_to_snippets.cson.txt`, select everything and copy into buffer (Ctrl+c).
 2. In Atom, open `Atom > Snippets...` (this will open `snippets.scon`)
-3. At the end of the file, paste (Ctrl+v) what you copied from `paste_to_snippets.cson.txt`
+3. At the end of the file, paste (`Ctrl+v`) what you copied from `paste_to_snippets.cson.txt`
 4. Snippets should start working immediately.
 
-### Current configuration
+## Current configuration
 
-#### Transliteration
+### Transliteration
 
 1. Type `code`, then `Tab` key to insert the desired character. *NB:* there is a bit on an issue with the `Tab` key when you are trying to do that in a `list`, where `Tab` adds indentation, rather than does conversion.
 2. `Codes` are organized as follows:
@@ -138,18 +150,6 @@ The following software must be installed for the wRoutine to work as intended.
 - **Atom** (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
 - **Pandoc** (<https://pandoc.org/>) does all the conversion into different formats;
 - **LaTeX** is used by **Pandoc** to generate PDF files; (**MiKTeX**, <https://miktex.org/>, is the easiest way to install and manage **LaTeX** on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
-
-# Sample project
-
-## Text sections
-
-- draft can be atomized into sections and subsections, all stored as separate files;
-- all sections of the main piece must be stored in the `draft` folder;
-- if you work on a book project, you can also create subfolders for each chapter;
-- the filenames must begin with `0` and end with `.md`; change file names to change their order in folders and subfolders. The initial `0` can be changed into some other character (or, better, prepended with `z`) in order to be excluded from the final draft;
-- all files that begin with `0` and end with `.md` will be joined—in alphabetical order—into the master draft in the main folder of the project; subfolders for chapters should also start which allows to easily arrange all folders into a desired order.
-- you can ‘play’ with subfolder and file names to achieve desired order of sections in your final document, for example `000 Introduction.md` will be always before `010 Subject of the Study.md`; you can add prefix `z` to exclude a section file from final draft (actually, any other prefix will work; `z.` will also push excluded section to the bottom of the list).
-- to start your own project, simply replace the existing files with your files; you must keep `000 YAML Header.md` as it is the necessary element for file conversion; simply change information there into what you need (Title, Subtitle, Author, etc.).
 
 ## Illustrations and Images
 
