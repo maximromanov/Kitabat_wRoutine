@@ -30,27 +30,6 @@ $endif$
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 
-% ADDED MGR - START
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{  \markboth{\footnotesize{{\addfontfeature{LetterSpace=5.0}\MakeUppercase{#1}}}}{} }
-\renewcommand{\sectionmark}[1]{ \markright{\footnotesize{{\addfontfeature{LetterSpace=5.0}\MakeUppercase{#1}}}}{} }
-
-\lhead{\thepage}
-\chead{}
-\rhead{\leftmark}
-%\rhead{\leftmark}
-\lfoot{}
-\cfoot{}
-\rfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-\usepackage[hang]{footmisc} % hanging footnote number of the footnote
-
-
-% ADDED MGR - END
 
 
 $if(euro)$
@@ -230,8 +209,24 @@ $if(author)$
 $endif$
 \date{$date$}
 
-
 % added by MGR - START
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{  \markboth{\footnotesize{{\addfontfeature{LetterSpace=5.0}\MakeUppercase{#1}}}}{} }
+\renewcommand{\sectionmark}[1]{ \markright{\footnotesize{{\addfontfeature{LetterSpace=5.0}\MakeUppercase{#1}}}}{} }
+
+\lhead{\thepage}
+\chead{}
+\rhead{\leftmark}
+%\rhead{\leftmark}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage[hang]{footmisc} % hanging footnote number of the footnote
 
 \usepackage{arabxetex}
 \usepackage{fontspec}

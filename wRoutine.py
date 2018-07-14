@@ -27,7 +27,7 @@ def formYMLheader(settings):
 
     vals = []
     listOfVals = ["author", "title", "date", "abstract", "bibliography", "csl",
-                  "papersize", "indent", "fontsize", "documentclass", "header-includes"]
+                  "papersize", "indent", "fontsize", "documentclass", "header-includes", "geometry"]
 
     for l in listOfVals:
         if l in settings:
