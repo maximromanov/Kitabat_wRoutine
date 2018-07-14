@@ -34,11 +34,13 @@ For example, the line:
 
 ``` markdown
 
-which can be used in a variety of distant reading modes of analysis. In the example above—in the bio-bibliographical record of al-Harawī (\textarabic{الهروي})—we have all three of them: 1) dates—in our case, the year of death, 163/780
+which can be used in a variety of distant reading modes of analysis. In the example above—in the
+bio-bibliographical record of al-Harawī (\textarabic{الهروي})—we have all three of them:
+1) dates—in our case, the year of death, 163/780
 
 ```
 
-will be renreded:
+will be renreded as:
 
 ![In-line Arabic Text](./README/arabic_inline.png)
 
@@ -54,7 +56,9 @@ For instance, the following:
 
 ``` markdown
 
-an entity in words. When the tag is properly entered in front of the necessary word or the word group (up to 3 words), it is dynamically highlighted. Automatically inserted tags are highlighted in black.
+an entity in words. When the tag is properly entered in front of the necessary word
+or the word group (up to 3 words), it is dynamically highlighted. Automatically
+inserted tags are highlighted in black.
 
 > [**NB:** Below is just an example of how Arabic can be added into the text as a blockquote.]
 
@@ -62,7 +66,7 @@ an entity in words. When the tag is properly entered in front of the necessary w
 
 ```
 
-will be rendered like:
+will be rendered as:
 
 ![Arabic blockquote](./README/arabic_blockquote.png)
 
