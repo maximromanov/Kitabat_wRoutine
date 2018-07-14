@@ -21,12 +21,10 @@ csl: ./bib/cms-fullnote.csl
 latex_template: ./templates/t_default.latex
 
 # Templates: 
-# - `t_default.latex`: documentclass: article, no toc
+# - `t_default.latex`: documentclass: article, comment out toc (#toc: --toc)
 # - `t_brill.latex`: documentclass: report, toc: --toc
 
 # ADVANCED SETTINGS - to tweak formatting
-# `t_brill.latex` does not work with `article`
-# `t_default.latex`
 
 papersize: a4
 indent: True
