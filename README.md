@@ -22,7 +22,7 @@ The following software must be installed for the wRoutine to work as intended.
 
 - `Atom` (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
 - `Pandoc` (<https://pandoc.org/>) does all the conversion into different formats;
-- `LaTeX` is used by `Pandoc` to generate PDF files; `MiKTeX`, <https://miktex.org/>, is the easiest way to install and manage `LaTeX` on any machine.
+- `LaTeX` is used by `Pandoc` to generate PDF files; (`MiKTeX`, <https://miktex.org/>, is the easiest way to install and manage `LaTeX` on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
 
 ## Features for the field of Arabic and Islamic studies
 
@@ -30,6 +30,7 @@ These features are implemented in Atom, and require a few simple steps to be act
 
 - transliteration support, i.e. an easy insertion of tricky characters that are used for transliteration of Arabic.
 - conversion of AH years into AH/CE format, which is usually used in publications.
+- support of Arabic: 1) Arabic words and phrases in the text; 2) Arabic blockquotes (kept outside of the main text)
 
 ### Transliteration Snippets for Atom
 
@@ -63,7 +64,7 @@ This script (`generate_snippets.py`) also generates *hijri>CE* conversion data (
 	1. `,<` or `,'` for *hamzaŧ*
 	2. `,>` or `,\`` for *ʿayn*
 	3. `,=t` for *tāʾ marbūṭaŧ*
-	4. `,~a` or `,\`a` for *ã*, *dagger alif*
+	4. `,~a` or ```,`a``` for *ã*, *dagger alif*
 	5. `,/a` for *alif maḳṣūraŧ*
 	6. **EXAMPLE:** `,_a` will change into ā
 
