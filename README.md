@@ -4,8 +4,10 @@ A simple markdown-based workflow for sustainable academic writing (with some ada
 
 ## Features
 
-- a nice and simple, yet sufficiently robust interface (<https://atom.io/>)
-- atomized drafting; easy inclusion/exclusion of sections into/from the master draft;
+### Features: General
+
+- a nice and simple, yet sufficiently robust interface (<https://atom.io/> seem to fit nicely)
+- atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
 - explicit logical markup with *markdown*, a simple text encoding scheme;
 - images and illustrations with captions;
 - cross-references to sections, images, tables within the text;
@@ -14,25 +16,41 @@ A simple markdown-based workflow for sustainable academic writing (with some ada
 - bibliography and citation styles;
 - automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires LaTeX engine to be installed on the machine.
 
-wRoutine is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+### Features: For Arabic and Islamic Studies
 
-## Requirements
-
-The following software must be installed for the wRoutine to work as intended.
-
-- **Atom** (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
-- **Pandoc** (<https://pandoc.org/>) does all the conversion into different formats;
-- **LaTeX** is used by **Pandoc** to generate PDF files; (**MiKTeX**, <https://miktex.org/>, is the easiest way to install and manage **LaTeX** on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
-
-## Features for the field of Arabic and Islamic studies
-
-These features are implemented in Atom, and require a few simple steps to be activated. They include the following:
+They include the following:
 
 - transliteration support, i.e. an easy insertion of tricky characters that are used for transliteration of Arabic.
 - conversion of AH years into AH/CE format, which is usually used in publications.
 - support of Arabic: 1) Arabic words and phrases in the text; 2) Arabic blockquotes (kept outside of the main text)
 
-### Transliteration Snippets for Atom
+The first two features are implemented with Atom *snippets*, and require a few simple steps to be activated.
+
+### Arabic support
+
+- Inline arabic word or phrase must be inserted into `\textarab{PHRASE}`, where `PHRASE` is an Arabic word or phrase.
+- Blockquotes are stored as separate text files in the subfolder `blockquotes` and added into a text as follows (on a separate line and with empty lines before and after; `>` formats the text as a blockquote):
+
+``` markdown
+
+> ARABIC:filename.txt
+
+```
+
+For instance, the following:
+
+``` markdown
+
+> ARABIC:harawi.txt
+
+```
+
+Will be rendered like:
+
+![Arabic blockquote](./README/arabic_blockquote.png)
+
+
+## Snippets for Atom: Transliteration and AH Date Conversion
 
 `snippets.csv` contains a table of variables to be converted into transliteration snippets for Atom. You can edit this file and add more relevant snippets.
 
@@ -75,7 +93,17 @@ This script (`generate_snippets.py`) also generates *hijri > CE* conversion data
 3. Type the desired year;
 4. Add `AH` (no spaces between the year and `AH`);
 5. Hit `TAB`;
-6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`.
+6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`. 
+
+wRoutine is based on *markdown*; you can learn all you need to know about it from the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+
+## Requirements
+
+The following software must be installed for the wRoutine to work as intended.
+
+- **Atom** (<https://atom.io/>), a free, hackable text editor. wRoutine is written with this text editor in mind, but it can be used with other editors as well (although some features will not be available). The overall configutation is describe below.
+- **Pandoc** (<https://pandoc.org/>) does all the conversion into different formats;
+- **LaTeX** is used by **Pandoc** to generate PDF files; (**MiKTeX**, <https://miktex.org/>, is the easiest way to install and manage **LaTeX** on any machine; **NB:** On my new machine I had some issues with MiKTeX—some components failed to work with pandoc [and probably more specifically—my settings; all the issues were solved when I installed LaTeX with MacTeX <http://www.tug.org/mactex/mactex-download.html>]; I think MacTeX requires more space on HDD than MiKTeX).
 
 # Sample project
 
