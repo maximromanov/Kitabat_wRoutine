@@ -114,7 +114,7 @@ def convertRelevant(draftFolder):
     for path, subdirs, files in os.walk(draftFolder):
        for file in files:
            if file.endswith(tuple([".md"])):
-               print(file)
+               #print(file)
                f = os.path.join(path, file)
                translitFile(f)
                #processArabicQuotes(f)

@@ -28,7 +28,40 @@ Below is the contents of the `_settings.yml` file, which include all the necessa
 
 ![Settings.yml](./README/settings.png)
 
+### MAIN SETTING
 
+These are the standard YAML parameters from Pandoc markdown; they will be collected and inserted into the main draft (together with other parameters from GENERAL and ADVANCED settings). `title` and `author` must be included; `abstract` and `date` are optional.
+
+- `title:` required (?) 
+- `author:` required (?) 
+- `abstract:` optional
+- `date:` optional
+
+### GENERAL SETTINGS
+
+- `draft_folder:` path to the atomized draft (required)
+- `draft_in:` name for the main draft, in markdown format (required)
+- `draft_out:` name for the output file, currently in PDF only (required)
+- `bibliography_master:` path to the master bibliography (required);
+- `bibliography:` path to the bibliography of the project, which is generated automatically from master bibliography, and includes only items that are actually used in the project; makes it faster to generate PDF (required)
+- `csl:` path to the stylesheet for typesetting references and bibliography (required)
+- `latex_template:` path to the LaTeX template (required); there are two now, but other templates can be added and used.
+
+**NB:** Templates: there are two now and they work with different settings.
+
+- for `documentclass: book`, there should be no `abstract` 
+- `documentclass: book` will work with both templates
+- `documentclass: article` will work only with `t_default.latex`
+- `t_brill.latex` works only with `documentclass: book` or `documentclass: report`
+
+### ADVANCED SETTINGS
+
+- `papersize:` optional
+- `indent:` optional
+- `fontsize:` optional
+- `documentclass:` required (report, book, article, etc.—See LaTeX classes)
+- `toc:` optional
+- `header-includes:` this one to define fonts, mostly (simply change the names of the fonts).
 
 ### Features: For Arabic and Islamic Studies
 
@@ -50,9 +83,9 @@ For example, the line:
 
 ``` markdown
 
-which can be used in a variety of distant reading modes of analysis. In the example above—in the
-bio-bibliographical record of al-Harawī (\textarabic{الهروي})—we have all three of them:
-1) dates—in our case, the year of death, 163/780
+which can be used in a variety of distant reading modes of analysis. In the
+example above—in the bio-bibliographical record of al-Harawī (\textarabic{الهروي})—we
+have all three of them: 1) dates—in our case, the year of death, 163/780
 
 ```
 
@@ -72,9 +105,9 @@ For instance, the following:
 
 ``` markdown
 
-an entity in words. When the tag is properly entered in front of the necessary word
-or the word group (up to 3 words), it is dynamically highlighted. Automatically
-inserted tags are highlighted in black.
+an entity in words. When the tag is properly entered in front of the necessary
+word or the word group (up to 3 words), it is dynamically highlighted.
+Automatically inserted tags are highlighted in black.
 
 > [**NB:** Below is just an example of how Arabic can be added into the text as a blockquote.]
 
@@ -134,7 +167,7 @@ This script (`generate_snippets.py`) also generates *AH > CE* conversion data (f
 5. Hit `TAB`;
 6. **EXAMPLE:** `,748AH` will convert into `748/1347 CE`.
 
-**NB:** *Hiǧrī* years can also be converted with `wRoutine.py` script. If you code your dates (this wirks for years and periods) in a certain manner, specific formats can be generated:
+**NB:** *Hiǧrī* years can also be converted with `wRoutine.py` script. If you code your dates (this works for years and periods) in a certain manner, specific formats can be generated:
 
 | code       |  conversion result |
 |-----------|----------------------|
