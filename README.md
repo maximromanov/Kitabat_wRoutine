@@ -1,6 +1,6 @@
 # Kitābaŧ wRoutine 1.0
 
-A simple markdown-based workflow for sustainable academic writing with some features for the field of Arabic and Islamic Studies (transliteration, AH date conversion, Arabic support). To start your own project, simply replace the `*.md` files in the `draft` folder with your own, and change the `_settings.yml` (see below).
+A simple markdown-based workflow for sustainable academic writing with some features for the field of Arabic and Islamic Studies (transliteration, AH date conversion, Arabic support). To test, if everything necessary is installed on you machine (see, **Requirements** below), run `python wRoutine.py` from `Terminal` on Mac (or `command line` on Windows). If everything is installed, a PDF file should be generated and open. To start your own project, simply replace `*.md` files in the `draft` folder with your own, and change the `_settings.yml` accordingly (see below).
 
 ## Features
 
