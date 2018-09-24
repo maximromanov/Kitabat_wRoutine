@@ -259,9 +259,9 @@ def main():
     draft_out = settings['draft_out']
 
     # you might need to replace `pandoc` with full path (in the next line)
-    pandocPath = "pandoc"
+    pandocPath = "/usr/local/Cellar/pandoc/2.2.3.2/bin/pandoc"
 
-    line1 = "%s -N %s --filter pandoc-fignos --filter pandoc-citeproc %s --pdf-engine=xelatex %s.md -o %s.pdf" % (pandocPath, latex_template, toc, draft_in, draft_out)
+    line1 = "%s -N %s -F pandoc-crossref -F pandoc-fignos -F pandoc-citeproc %s --pdf-engine=xelatex %s.md -o %s.pdf" % (pandocPath, latex_template, toc, draft_in, draft_out)
     line2 = "open %s.pdf" % draft_out
 
     print(line1)

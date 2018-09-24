@@ -16,7 +16,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 	- see the following two tutorials on the basic principles of [*markdown*](https://programminghistorian.org/en/lessons/getting-started-with-markdown) and [*sustainable academic writing*](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown);
 	- standard and expanded pandoc markdown is used for the following (see [Pandoc User’s Guide](http://pandoc.org/MANUAL.html) for specific details): 
 		- images and illustrations with captions;
-		- cross-references to sections, images, tables within the text;
+		- cross-references to sections, images, tables within the text; you will need `pandoc-crossref` for crossreferences: <https://github.com/lierdakil/pandoc-crossref>; easiest on Mac: `brew install pandoc-crossref`);
 		- footnotes;
 - [Atom; bibTeX] automatic citation insertion form bibliography files;
 - [bibTeX; Pandoc] bibliography and citation styles (Pandoc);
