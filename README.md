@@ -77,7 +77,7 @@ The first two features are implemented with Atom *snippets*, and require a few s
 
 **NB:** In the default settings, `Amiri` font is required to render Arabic. You can either install it (<https://www.amirifont.org/>), or change the name of the Arabic font in `_settings.yml`
 
-- Inline arabic word or phrase must be inserted into `\textarab{PHRASE}`, where `PHRASE` is an Arabic word or phrase.
+- Inline arabic word or phrase must be inserted into `\textarab{PHRASE}`, where `PHRASE` is an Arabic word or phrase. (**NB:** use `\textarab[voc]{PHRASE}`, if the arabic text has *ḥarakāt* and you want to preserve them).
 
 For example, the line:
 
