@@ -22,6 +22,15 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 - [bibTeX; Pandoc] bibliography and citation styles (Pandoc);
 - [Pandoc; XeLaTeX] automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires [Xe]LaTeX engine to be installed on the machine; at the moment, only PDF conversion is fully implemented.
 
+## Component installation notes
+
+# Pandoc
+
+* <https://pandoc.org/installing.html>
+	* **NB:** *Anaconda* is likely to mess up Pandoc installation; *Anaconda* may have to be disabled in `~/.bash_profile` (Mac)
+	* some Pandoc filters might need an update: some are updated with `brew` (like `brew install pandoc-crossref`), others are with `pip` (or `pip3`), like `pip3 install --upgrade pandoc-fignos`.
+
+
 ## `_settings.yml` File 
 
 Below is the contents of the `_settings.yml` file, which include all the necessary metadata and settings.
@@ -36,6 +45,10 @@ These are the standard YAML parameters from Pandoc markdown; they will be collec
 - `author:` required (?) 
 - `abstract:` optional
 - `date:` optional
+
+### IMPORTANT
+
+- `path_to_pandoc:` path to pandoc on your machine (something like `/usr/local/Cellar/pandoc/2.5/bin/pandoc`)
 
 ### GENERAL SETTINGS
 
@@ -151,10 +164,11 @@ This script (`generate_snippets.py`) also generates *AH > CE* conversion data (f
 3. **NB:** There are some additional characters:
 	1. **,<** or **,'** for *ʾ*, *hamzaŧ*
 	2. **,>** or **,\`** for *ʿayn*
-	3. **,=t** for **, *tāʾ marbūṭaŧ*
-	4. **,~a** or **,`a** for *ã*, *dagger alif*
+	3. **,=t** for *tāʾ marbūṭaŧ*
+	4. **,~a** or **,\`a** for *ã*, *dagger alif*
 	5. **,/a** for *á*, *alif maḳṣūraŧ*
-	6. **EXAMPLE:** **,_a** will change into *ā*
+	6. **EXAMPLE:** *,_a* will change into *ā*
+
 
 ### *Hiǧrī* years
 
