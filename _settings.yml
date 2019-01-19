@@ -3,12 +3,22 @@
 # MAIN SETTINGS - Title, Author, etc.
 # TITLE: Preaching in “The History of Islām” (c. 600–1300)
 title: |
-  Preaching Practices in “The History of Islam” (c. 600–1300 CE).
-  *A Social History through Algorithmic Analysis*\
+  Preaching Practices in “The History of Islam”\
+  *Algorithmic Analysis into Social History*\
+  (c. 600–1300 CE)
 author: |
   Maxim Romanov\
   *University of Vienna*
 date: \today
+
+# Progress report
+# - in case you want to keep track of your writing progress, you can set starting and ending dates
+#   and the desired length of the draft; if these parameters are provided a progress report will be
+#   generated, suggesting daily writing rate for finishing your draft on time.
+#   DATE format: YYYY/MM/DD
+start_date: 2017/01/20
+end_date: 2017/05/31
+draft_length: 5000
 
 # GENERAL SETTINGS - Elements that should go into the final output
 draft_folder: ./draft/

@@ -48,7 +48,7 @@ These are the standard YAML parameters from Pandoc markdown; they will be collec
 
 ### IMPORTANT
 
-- `path_to_pandoc:` path to pandoc on your machine (something like `/usr/local/Cellar/pandoc/2.5/bin/pandoc`)
+- `path_to_pandoc:` path to pandoc on your machine (something like `/usr/local/bin/pandoc`)
 
 ### GENERAL SETTINGS
 
@@ -75,6 +75,28 @@ These are the standard YAML parameters from Pandoc markdown; they will be collec
 - `documentclass:` required (report, book, article, etc.—See LaTeX classes)
 - `toc:` optional
 - `header-includes:` this one to define fonts, mostly (simply change the names of the fonts).
+
+### EXTRA SETTINGS: PROGRESS REPORT
+
+- `start_date`: 2019/01/01
+- `end_date`: 2019/01/15
+- `draft_length`: 14000
+
+You can define your progress parameters in the settings file. Say, you want to write a draft of 14,000 words in two weeks, which would means that you need to write about 1,000 words per day during 2 weeks. You can set a starting date (`start_date`) and the ending date (`end_date`), as well as define the length of your draft (`draft_length`). An example is given above. Please, note that the date format should be followed (`YYYY/MM/DD`). When you run the script, you will see a progress report (see below). Most of the content of the report should be clear;  at the bottom there is a table of detailed progress, which shows 1) date; 2) total length on that date; 3) number of words written between that day and a day in the previous record. Rerunning the script updates *today*'s record. The table with day-by-day progress is saved into a CSV file. 
+
+```
+============================
+=== Progress report
+============================
+132 days left till the set deadline (2019-05-31 00:00:00).
+10 percent of target draft (90000) is complete.
+NB: This count does not include automatically generated content, like references, bibliography, etc.
+Current pace: 613 words per day (should not fall below: 687 to meet the deadline)
+============================
+2019/01/19	9015	9
+2019/01/18	9006	9006
+============================
+```
 
 ### Features: For Arabic and Islamic Studies
 

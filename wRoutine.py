@@ -40,6 +40,7 @@ def formYMLheader(settings):
     return(vals)
 
 settings = loadSettings("_settings.yml")
+#print(settings)
 ymlHeader = formYMLheader(settings)
 
 # AH>CE conversion
@@ -154,7 +155,7 @@ def combineMasterDraft(draftFolder):
     for path, subdirs, files in os.walk(draftFolder):
         for file in files:
             if file[0] == "0" and file.endswith(tuple([".md"])):
-                #print(file)
+                print(file)
                 i = os.path.join(path, file)
                 master.append(i)
 
@@ -231,12 +232,129 @@ def updateBibliographies(draftFile):
     with open(settings['bibliography'], "w", encoding="utf8") as f9:
         f9.write("\n\n".join(sorted(bibList)))
 
+# PROGRESS REPORT
+
+def currentLength(draft_text):
+    with open(draft_text+".md", "r", encoding="utf8") as f1:
+        text = f1.read()
+        # some cleaning steps
+    length = len(re.findall("\w+", text))
+    return(length)
+
+def draft_length(report_list):
+    draft_length = 0
+    for i in report_list:
+        draft_length += int(i.split("\t")[-1])
+    return(draft_length)
+    
+from datetime import date, timedelta, datetime
+def progressReport(file_to_analyze, start_date, end_date, target_length):
+    # get current length, and convert dates
+    length = currentLength(file_to_analyze)
+    start_date = datetime.strptime(start_date, "%Y/%m/%d")
+    end_date = datetime.strptime(end_date, "%Y/%m/%d")
+    
+    # check if report already exists
+    report = file_to_analyze+"_progressReport.csv" 
+    if not os.path.isfile(report):
+        open(report, "w").close()
+    else:
+        print("=" * 80)
+        print("You can activate progress report for your writing project; see README.md for details...")
+
+    # update report
+    with open(report, "r", encoding="utf8") as f1:
+        report_text = f1.read().split("\n")
+
+    if report_text == [""]:
+        today = date.today()
+        yesterday = today - timedelta(1)
+        # line 0
+        lineZero = yesterday.strftime('%Y/%m/%d') +"\t"+str(length)+"\t"+str(length)
+        lineOne  = today.strftime('%Y/%m/%d') +"\t"+str(length)+"\t"+str(0)
+
+        reportText = lineOne +"\n"+ lineZero
+
+        with open(report, "w", encoding="utf8") as f9:
+            f9.write(reportText)
+
+        print("=" * 80)
+        print("The very first report has been generated:")
+        print("=" * 80)
+        print(reportText)
+            
+    else:
+        lineTop = report_text[0].split("\t")
+        lineBef = report_text[1].split("\t")
+
+        today = date.today().strftime('%Y/%m/%d')
+        today = datetime.strptime(today, "%Y/%m/%d")
+        lineTopDate = datetime.strptime(lineTop[0], "%Y/%m/%d")
+
+        if today == lineTopDate:
+            # update the top line
+            lineTop = lineTop
+            lineBef = lineBef
+
+            lengthCurrent = length
+            progress = lengthCurrent - int(lineBef[1])
+
+            lineTop[1] = str(lengthCurrent)
+            lineTop[2] = str(progress)
+
+            lineTop = "\t".join(lineTop)
+
+            report_text[0] = lineTop
+               
+        else:
+            # add top line
+            lineTop = ""
+            lineBef = lineTop
+
+            lengthCurrent = length
+            progress = lengthCurrent - int(lineBef[1])
+
+            lineTop  = today.strftime('%Y/%m/%d') +"\t"+str(lengthCurrent)+"\t"+str(progress)
+            lineTop = "\t".join(lineTop)
+
+            report_text = lineTop + report_text
+
+
+        # save report
+        with open(report, "w", encoding="utf8") as f9:
+            f9.write("\n".join(report_text))
+
+        # print out report
+        today = date.today().strftime('%Y/%m/%d')
+        today = datetime.strptime(today, "%Y/%m/%d")
+        
+        draftLen = draft_length(report_text)
+        draftTar = int(target_length)
+        daysLeft = (end_date - today).days
+        totalPeriod = (end_date - start_date).days
+        pace = int(draftTar/totalPeriod)
+        currentPace = int((draftTar-draftLen)/daysLeft)
+        completed = int(lengthCurrent/int(target_length)*100)
+
+        print("="*80)
+        print("=== Progress report")
+        print("="*80)
+
+        print("%d days left till the set deadline (%s)." % (daysLeft, end_date))
+        print("%d percent of target draft (%d) is complete." % (completed, draftTar))
+        print("NB: This count does not include automatically generated content, like references, bibliography, etc.")
+        print("Current pace: %d words per day (should not fall below: %d to meet the deadline)" % (currentPace, pace))
+        
+        print("="*80)
+        print("\n".join(report_text))
+
 # MAIN FUNCTION
 
 def main():
     
     combineMasterDraft(settings['draft_folder'])
     updateBibliographies(settings['draft_in'])
+    progressReport(settings['draft_in'], settings['start_date'], settings['end_date'], settings['draft_length'])
 
     # Running Pandoc
     print("=" * 80)
@@ -257,11 +375,9 @@ def main():
 
     draft_in  = settings['draft_in']
     draft_out = settings['draft_out']
+    pandocPath = settings['path_to_pandoc']
 
-    # you might need to replace `pandoc` with full path (in the next line)
-    pandocPath = "/usr/local/Cellar/pandoc/2.2.3.2/bin/pandoc"
-
-    line1 = "%s -N %s -F pandoc-crossref -F pandoc-fignos -F pandoc-citeproc %s --pdf-engine=xelatex %s.md -o %s.pdf" % (pandocPath, latex_template, toc, draft_in, draft_out)
+    line1 = "%s -N %s -F pandoc-fignos -F pandoc-crossref -F pandoc-citeproc %s --pdf-engine=xelatex %s.md -o %s.pdf" % (pandocPath, latex_template, toc, draft_in, draft_out)
     line2 = "open %s.pdf" % draft_out
 
     print(line1)
