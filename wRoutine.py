@@ -308,16 +308,14 @@ def progressReport(file_to_analyze, start_date, end_date, target_length):
                
         else:
             # add top line
-            lineTop = ""
             lineBef = lineTop
+            lineTop = ""
 
             lengthCurrent = length
             progress = lengthCurrent - int(lineBef[1])
 
             lineTop  = today.strftime('%Y/%m/%d') +"\t"+str(lengthCurrent)+"\t"+str(progress)
-            lineTop = "\t".join(lineTop)
-
-            report_text = lineTop + report_text
+            report_text = [lineTop] + report_text
 
 
         # save report
