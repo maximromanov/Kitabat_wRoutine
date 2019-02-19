@@ -6,7 +6,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 
 ### Features: General
 
-- [Atom] a nice and simple, yet sufficiently robust interface (<https://atom.io/> seem to fit nicely)
+- [Atom] a nice and simple, yet sufficiently robust interface (<https://atom.io/>) seem to fit nicely;
 - [wRoutine] atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
 	- draft can be atomized into sections and subsections, all stored as separate files;
 	- all sections of the main piece must be stored in the `draft` folder; if you work on a book project, you can also create subfolders for each chapter;
@@ -239,6 +239,22 @@ Store illustrations in the `images` folder (use subfolders for chapters, if work
 # To Generate the Final Text
 
 Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project’s folder run: `python3 wRoutine.py`). On Windows you may need to give the full path to python (version 3.x). This script will collect all pieces into the main draft and then will generate a PDF-file.
+
+## Comments
+
+Long comments (several paragraphs/large section):
+
+```
+<!--
+HTML-style comments work
+- these are convenient for commenting out a large section
+- or, for drafting sections/paragraphs
+-->
+```
+
+One line/paragraph comment:
+
+`[//]: # This format also works as a comment`
 
 # Issues:
 
