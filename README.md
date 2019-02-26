@@ -268,6 +268,8 @@ One can cite a reference in a text with the author name, year, and page number i
 
 Citations are best picked with **Zotero-citations** plugin for Atom (<https://atom.io/packages/zotero-citations>), which can be installed like other packages. For Mac: Toggle the Command Palette (`command-shift-P`, or select it in Packages menu), and scroll down to select 'Zotero Citations: Pick'. After that `control-option-p` brings up the Zotero look-up window (like in MS Word), from where a citation can be selected, and a markdown citation will be inserted. **NB:** Zotero must be running and the **Better BibTeX for Zotero** plugin must installed.
 
+**NB: Capitalization** Words in Arabic titles get annoyingly capitalized. The simple and easiest solution: make sure that the language of the publication is set to `Arabic` (select a record > Info tab > Language). After that capitalization will remain exactly the way it is in Zotero.
+
 # To Generate the Final Text
 
 Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project’s folder run: `python3 wRoutine.py`). On Windows you may need to give the full path to python (version 3.x). This script will collect all pieces into the main draft and then will generate a PDF-file.

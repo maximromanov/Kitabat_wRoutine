@@ -23,7 +23,8 @@ def loadSettings(ymlFile):
 
 # FORMS THE YAML HEADER
 def formYMLheader(settings):
-    template = "---\n%s\n---\n\\newpage\n\n\n"
+    npVal = settings["newpage"]
+    template = "---\n%s\n---\n\\"+npVal+"\n\n\n"
 
     vals = []
     listOfVals = ["author", "title", "date", "abstract", "bibliography", "csl",
