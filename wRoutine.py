@@ -145,7 +145,6 @@ def insertQuotations(text):
             text = text.replace(l, quote)
     return(text)
 
-
 # combine master draft
 def combineMasterDraft(draftFolder):
     print("=" * 80)
@@ -340,7 +339,7 @@ def progressReport(file_to_analyze, start_date, end_date, target_length):
         print("="*80)
 
         print("%d days left till the set deadline (%s)." % (daysLeft, end_date))
-        print("%d percent of target draft (%d) is complete." % (completed, draftTar))
+        print("%d (%d pages) percent of target draft (%d) is complete." % (completed, draftLen/300, draftTar))
         print("NB: This count does not include automatically generated content, like references, bibliography, etc.")
         print("Current pace: %d words per day (should not fall below: %d to meet the deadline)" % (currentPace, pace))
         
@@ -376,6 +375,7 @@ def main():
     draft_out = settings['draft_out']
     pandocPath = settings['path_to_pandoc']
 
+    # conversion to PDF
     line1 = "%s -N %s -F pandoc-fignos -F pandoc-crossref -F pandoc-citeproc %s --pdf-engine=xelatex %s.md -o %s.pdf" % (pandocPath, latex_template, toc, draft_in, draft_out)
     line2 = "open %s.pdf" % draft_out
 
@@ -385,7 +385,14 @@ def main():
     print(line2)
     os.system(line2)
 
-    # TO ADD: 1) conversion to DOCX and HTML
+    # conversion to DOCX
+    line1 = "%s -F pandoc-fignos -F pandoc-crossref -F pandoc-citeproc %s.md -o %s.docx" % (pandocPath, draft_in, draft_out)
+    print(line1)
+    os.system(line1)
+
+    # TO ADD: 1) conversion to HTML
+
+
         
 main()
 
