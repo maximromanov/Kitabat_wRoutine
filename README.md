@@ -4,7 +4,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 
 **NB:** The content below needs to be reorganized for readability; at the moment it is a bunch of useful, but scattered notes.
 
-## Features
+## `Atom` Features
 
 - [Atom] a nice and simple, yet sufficiently robust interface (<https://atom.io/>) seem to fit nicely;
 - [wRoutine] atomized drafting: easy inclusion/exclusion of sections into/from the master draft;
@@ -22,6 +22,11 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 - [bibTeX; Pandoc] bibliography and citation styles (Pandoc);
 - [Pandoc; XeLaTeX] automatic generation of desired formats (e.g., PDF, HTML, DOCX, etc.); PDF requires [Xe]LaTeX engine to be installed on the machine; at the moment, only PDF conversion is fully implemented.
 
+### Atom packages:
+
+- `Todo Show`: searches for TODO statements in your project and shows them to you (<https://atom.io/packages/todo-show>)
+	- `ctrl-shift-T` activates it.
+
 ## Component installation notes
 
 # Pandoc
@@ -36,7 +41,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 # LaTeX Installation (XeLaTeX)
 
 * <https://miktex.org/download> --- perhaps good for Windows; on Mac everything goes sideways... perhaps better to avoid this altogether.
-* LaTeX for Mac: `brew install librsvg python homebrew/cask/basictex` (from Pandoc page); after that a bunch of packages has to be installed manually (annoying, but doable and needs to be done only once); alternatively, one can install `MacTeX` (this one is quite large ~4Gb)
+* LaTeX for Mac: `brew install librsvg python homebrew/cask/basictex` (from Pandoc page); after that a bunch of packages has to be installed manually (annoying, but doable and needs to be done only once); alternatively, one can install `MacTeX` (this one is quite large, about 4Gb)
 
 # Amiri Font
 
