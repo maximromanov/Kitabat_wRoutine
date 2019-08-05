@@ -270,6 +270,11 @@ Citations are best picked with **Zotero-citations** plugin for Atom (<https://at
 
 **NB: Capitalization** Words in Arabic titles get annoyingly capitalized. The simple and easiest solution: make sure that the language of the publication is set to `Arabic` (select a record > Info tab > Language). After that capitalization will remain exactly the way it is in Zotero.
 
+## Issue with Zotero-citations plugin
+
+* [August 5, 2019] For some reason, it stopped working --- it cannot connect to Zotero; it thinks that it is not open, while it is.
+* Alternative solution is `autocomplete-bibtex` package: not as nice, but does the trick --- this one connects to the BibTeX file.
+
 # To Generate the Final Text
 
 Simpy run the `wRoutine.py` script (for example, in*Terminal*, from the project’s folder run: `python3 wRoutine.py`). On Windows you may need to give the full path to python (version 3.x). This script will collect all pieces into the main draft and then will generate a PDF-file.
