@@ -41,7 +41,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 # LaTeX Installation (XeLaTeX)
 
 * <https://miktex.org/download> --- perhaps good for Windows; on Mac everything goes sideways... perhaps better to avoid this altogether.
-* LaTeX for Mac: `brew install librsvg python homebrew/cask/basictex` (from Pandoc page); after that a bunch of packages has to be installed manually (annoying, but doable and needs to be done only once); alternatively, one can install `MacTeX` (this one is quite large, about 4Gb)
+* LaTeX for Mac: `brew install librsvg python homebrew/cask/basictex` (from Pandoc page); after that a bunch of packages has to be installed manually (annoying, but doable and needs to be done only once; `tlmgr install PACKAGE`); alternatively, one can install `MacTeX` (this one is quite large, about 4Gb)
 
 # Amiri Font
 
