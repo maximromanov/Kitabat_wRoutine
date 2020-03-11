@@ -83,7 +83,9 @@ These are the standard YAML parameters from Pandoc markdown; they will be collec
 - for `documentclass: book`, there should be no `abstract`
 - `documentclass: book` will work with both templates
 - `documentclass: article` will work only with `t_default.latex`
+
 - `t_brill.latex` works only with `documentclass: book` or `documentclass: report`
+	- `t.brill_endnotes.latex` converts all footnotes into endnotes. Endnotes can be typeset at the end of each chapter with `\theendnotes`, which should simply be added at the end of each chapter; otherwise, all notes will be moved to the very end of the typeset document.
 
 ### ADVANCED SETTINGS
 
