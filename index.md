@@ -53,7 +53,7 @@ A simple markdown-based workflow for sustainable academic writing with some feat
 
 Below is the contents of the `_settings.yml` file, which include all the necessary metadata and settings.
 
-![Settings.yml](./README/settings.png)
+![Settings.yml](https://github.com/maximromanov/Kitabat_wRoutine/blob/master/README/settings.png)
 
 ### MAIN SETTING
 
@@ -146,7 +146,7 @@ have all three of them: 1) dates—in our case, the year of death, 163/780
 
 will be renreded as:
 
-![In-line Arabic Text](./README/arabic_inline.png)
+![In-line Arabic Text](https://github.com/maximromanov/Kitabat_wRoutine/blob/master/README/arabic_inline.png)
 
 - Blockquotes are stored as separate text files in the subfolder `blockquotes` and added into a text as follows (on a separate line and with empty lines before and after; `>` formats the text as a blockquote):
 
@@ -172,7 +172,7 @@ Automatically inserted tags are highlighted in black.
 
 will be rendered as:
 
-![Arabic blockquote](./README/arabic_blockquote.png)
+![Arabic blockquote](https://github.com/maximromanov/Kitabat_wRoutine/blob/master/README/arabic_blockquote.png)
 
 
 ## Snippets for Atom: Transliteration and AH Date Conversion
