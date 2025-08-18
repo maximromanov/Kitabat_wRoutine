@@ -1,0 +1,4 @@
+Pillow==10.3.0
+PyICU==2.13
+tkinterdnd2==0.4.2
+py2app==0.28.6; platform_system == "Darwin"
